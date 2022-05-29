@@ -1,0 +1,37 @@
+server:
+  port: 8080
+
+mybatis:
+  mapper-locations: classpath*:/mappers/*Mapper.xml
+
+spring:
+  application:
+    name: Service API
+  datasource:
+    url: jdbc:postgresql://localhost:5432/test_erp
+    username: mostafa
+    password: 12345
+    driverClassName: org.postgresql.Driver
+    hikari:
+      minimumIdle: 5
+      maximumPoolSize: 20
+      idleTimeout: 30000
+      poolName: pool
+      maxLifetime: 2000000
+      connectionTimeout: 30000
+    type: org.postgresql.ds.PGPoolingDataSource
+    jackson:
+      default-property-inclusion: non_null
+    output:
+      ansi:
+        enabled: always
+  liquibase:
+    changeLog: classpath:db/changelog/changelog-master.xml
+    enabled: true
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 2MB
+      max-request-size: 10MB
+      location: ${java.io.tmpdir}
+

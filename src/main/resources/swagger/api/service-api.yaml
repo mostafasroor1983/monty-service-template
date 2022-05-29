@@ -1,0 +1,26 @@
+openapi: 3.0.0
+info:
+  title: Service API
+  version: v1
+servers:
+  - url: http://localhost:8081
+
+paths:
+  /check-status:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+        '500':
+          description: Internal server error
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Internal server error
+      description: check status od service
+      operationId: checkStatus
